@@ -20,7 +20,7 @@ public class TurmaTest implements Serializable {
 	@Inject
 	private Turma turma;
 
-	@Test
+	@Test(expected = TurmaException.class)
 	public void matricularAlunoComSucesso() {
 		Aluno aluno = new Aluno("Santos Dumont");
 
