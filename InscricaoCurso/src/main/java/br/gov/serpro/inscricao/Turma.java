@@ -59,7 +59,6 @@ public class Turma implements Serializable {
 		return em.createQuery("select a from Aluno a").getResultList();
 	}
 
-
 	public boolean estaMatriculado(Aluno aluno) {
 		return obterAlunosMatriculados().contains(aluno);
 	}

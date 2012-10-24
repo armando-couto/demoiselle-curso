@@ -8,7 +8,6 @@
         <class>br.gov.serpro.inscricao.entity.Aluno</class>
 
         <properties>
-
             <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="" />
