@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 
 import br.gov.frameworkdemoiselle.annotation.Startup;
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
+import br.gov.frameworkdemoiselle.message.MessageContext;
 import br.gov.frameworkdemoiselle.security.RequiredPermission;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
@@ -27,13 +28,16 @@ public class TurmaBC implements Serializable {
 
 	@Inject
 	private ResourceBundle bundle;
+	
+	@Inject
+	private MessageContext messageContext;
 
 	@Inject
 	private Logger logger;
 
 	@Inject
 	private AlunoBC alunoBC;
-
+	
 	@Startup
 	public void iniciar() {
 		logger.info("Iniciando ...");
@@ -56,7 +60,9 @@ public class TurmaBC implements Serializable {
 
 		alunoBC.insert(aluno);
 
-		logger.info(bundle.getString("matricula.sucesso", aluno.getNome()));
+		String mensagem = bundle.getString("matricula.sucesso", aluno.getNome()); 
+        logger.info(mensagem);
+        messageContext.add(mensagem);
 	}
 
 	@RequiredPermission(resource = "turma", operation = "consultar")
