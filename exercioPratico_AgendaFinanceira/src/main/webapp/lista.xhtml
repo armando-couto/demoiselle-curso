@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:f="http://java.sun.com/jsf/core"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<a href="cadastro.jsf">Cadastrar novo Compromisso</a>
+		<h:dataTable value="#{compromissoListMB.resultList}" var="compromisso">
+			<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{compromisso.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{compromisso.nomeCompromisso}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Valor do Compromisso</f:facet>
+				<h:outputText value="#{compromisso.valorCompromisso}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Valor Pago</f:facet>
+				<h:outputText value="#{compromisso.valorPago}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data Vencimento</f:facet>
+				<h:outputText value="#{compromisso.dataVencimento}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data Pagamento</f:facet>
+				<h:outputText value="#{compromisso.dataPagamento}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Alterar</f:facet>
+				<h:form>
+					<h:commandButton value="Alterar" action="#" />
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
