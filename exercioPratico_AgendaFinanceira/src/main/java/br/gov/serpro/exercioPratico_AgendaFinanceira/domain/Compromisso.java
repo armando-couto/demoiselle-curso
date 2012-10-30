@@ -32,10 +32,9 @@ public class Compromisso implements Serializable {
 
 	public Compromisso() {}
 	
-	public Compromisso(Long id, String nomeCompromisso, Date dataVencimento,
+	public Compromisso(String nomeCompromisso, Date dataVencimento,
 			Date dataPagamento, BigDecimal valorCompromisso,
 			BigDecimal valorPago) {
-		this.id = id;
 		this.nomeCompromisso = nomeCompromisso;
 		this.dataVencimento = dataVencimento;
 		this.dataPagamento = dataPagamento;

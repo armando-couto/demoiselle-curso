@@ -5,8 +5,8 @@
 				template="/template/main.xhtml">
 
 	<ui:define name="body">
-		<a href="cadastro.jsf">Cadastrar novo Compromisso</a>
-		<h:dataTable value="#{compromissoListMB.resultList}" var="compromisso">
+		<h:button outcome="cadastro" value="Cadastrar novo Compromisso" />
+		<h:dataTable value="#{compromissoListMB.resultList}" var="compromisso" border="2">
 			<h:column>
 				<f:facet name="header">Id</f:facet>
 				<h:outputText value="#{compromisso.id}" />
@@ -17,24 +17,34 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Valor do Compromisso</f:facet>
-				<h:outputText value="#{compromisso.valorCompromisso}" />
+				<h:outputText value="#{compromisso.valorCompromisso}">
+					<f:convertNumber type="number" pattern="#,###,####,###,###,###,##0.00"/>
+				</h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Valor Pago</f:facet>
-				<h:outputText value="#{compromisso.valorPago}" />
+				<h:outputText value="#{compromisso.valorPago}">
+					<f:convertNumber type="number" pattern="#,###,####,###,###,###,##0.00"/>
+				</h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Data Vencimento</f:facet>
-				<h:outputText value="#{compromisso.dataVencimento}" />
+				<h:outputText value="#{compromisso.dataVencimento}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+				</h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Data Pagamento</f:facet>
-				<h:outputText value="#{compromisso.dataPagamento}" />
+				<h:outputText value="#{compromisso.dataPagamento}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+				</h:outputText>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Alterar</f:facet>
 				<h:form>
-					<h:commandButton value="Alterar" action="#" />
+					<h:commandButton value="Alterar" action="#{compromissoEditMB.getNextView}">
+						<f:param name="id" value="#{compromisso.id}"/>
+					</h:commandButton>
 				</h:form>
 			</h:column>
 		</h:dataTable>

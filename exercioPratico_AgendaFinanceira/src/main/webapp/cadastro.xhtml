@@ -6,7 +6,30 @@
 
 	<ui:define name="body">
 		<h:form>
-		
+			<h:panelGrid columns="2">
+				Nome: <h:inputText value="#{compromissoEditMB.bean.nomeCompromisso}" />
+				Data Pagamento:
+				<h:inputText value="#{compromissoEditMB.bean.dataPagamento}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+				</h:inputText>
+				Data Vencimento:
+				<h:inputText value="#{compromissoEditMB.bean.dataVencimento}">
+					<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+				</h:inputText>
+				Valor:
+				<h:inputText value="#{compromissoEditMB.bean.valorCompromisso}">
+					<f:convertNumber type="number" pattern="#,###,####,###,###,###,##0.00"/>
+				</h:inputText>
+				Valor Pago:
+				<h:inputText value="#{compromissoEditMB.bean.valorPago}">
+					<f:convertNumber type="number" pattern="#,###,####,###,###,###,##0.00"/>
+				</h:inputText>
+				<h:panelGroup>
+					<h:commandButton action="#{compromissoEditMB.insert}" value="Cadastrar" rendered="#{compromissoEditMB.bean.id == null}" />
+					<h:commandButton action="#{compromissoEditMB.update}" value="Alterar" rendered="#{compromissoEditMB.bean.id != null}" />
+				</h:panelGroup>
+				<h:button outcome="lista" value="Voltar a Listas" />
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>

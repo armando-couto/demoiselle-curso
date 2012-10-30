@@ -15,10 +15,10 @@ public class CompromissoListMB extends AbstractListPageBean<Compromisso, Long> {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private CompromissoBC compromissoBC;
-	
+	private CompromissoBC bc;
+
 	@Override
 	protected List<Compromisso> handleResultList() {
-		return compromissoBC.findAll();
+		return bc.findAll();
 	}
 }
